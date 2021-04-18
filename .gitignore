@@ -1,6 +1,10 @@
 .DS_Store
 .idea
-wcoutput
+result
+result/*
+
+# txt file
+*.txt
 
 # Compiled class file
 *.class
