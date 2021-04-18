@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -12,6 +15,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class LPMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+    public static final Log log = LogFactory.getLog(LPMapper.class);
     private final static IntWritable one = new IntWritable(1);
     private Text ip = new Text();
 
@@ -25,6 +29,7 @@ public class LPMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
             String extract_ip = ipMatcher.find() ? ipMatcher.group() : null;
 
             ip.set(extract_ip);
+            //log.info("Preprocess ip: " + extract_ip);
             context.write(ip, one);
         }
     }
