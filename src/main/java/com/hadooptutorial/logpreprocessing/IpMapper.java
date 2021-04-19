@@ -13,9 +13,9 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 
-public class LPMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class IpMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
-    public static final Log log = LogFactory.getLog(LPMapper.class);
+    public static final Log log = LogFactory.getLog(IpMapper.class);
     private final static IntWritable one = new IntWritable(1);
     private Text ip = new Text();
 
