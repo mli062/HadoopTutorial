@@ -21,17 +21,17 @@ public class LPMain {
 
         Job job = new Job();
         job.setJarByClass(LPMain.class);
-        job.setJobName("IpCounter");
+        job.setJobName("Counter");
 
-        FileInputFormat.addInputPath(job, new Path("auth_log_test_dataset.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("result/lpoutput"));
+        FileInputFormat.addInputPath(job, new Path("../dataset/auth_log/auth_log_test_dataset.txt"));
+        FileOutputFormat.setOutputPath(job, new Path("result/lpuseroutput"));
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         job.setOutputFormatClass(TextOutputFormat.class);
 
-        job.setMapperClass(LPMapper.class);
-        job.setReducerClass(LPReducer.class);
+        job.setMapperClass(UserMapper.class);
+        job.setReducerClass(UserReducer.class);
 
         int exitCode = job.waitForCompletion(true) ? 0: 1;
 
